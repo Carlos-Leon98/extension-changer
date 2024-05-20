@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import filedialog
 
 def import_file():
-    file_path = filedialog.askopenfilename(title="Select a file", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
+    file_path = filedialog.askopenfilename(title="Select a file", filetypes=[("Text files", "*.*"), ("All files", "*.*")])
 
     if file_path:
         print("Selected file:", file_path)
