@@ -22,18 +22,13 @@ class MyGUI:
         self.frame.columnconfigure(3, weight=1)
         self.frame.columnconfigure(4, weight=1)
 
-        self.ratio_jpeg = tk.StringVar()
-        self.ratio_png = tk.StringVar()
-        self.ratio_pdf = tk.StringVar()
-        self.ratio_svg = tk.StringVar()
-        self.ratio_mp4 = tk.StringVar()
+        self.file_to_convert = tk.StringVar()
 
-
-        self.ratio_button_jpeg = tk.Radiobutton(self.frame, text="JPEG", value="JPEG", variable=self.ratio_jpeg)
-        self.ratio_button_png = tk.Radiobutton(self.frame, text="PNG", value="PNG", variable=self.ratio_png)
-        self.ratio_button_pdf = tk.Radiobutton(self.frame, text="PDF", value="PDF", variable=self.ratio_pdf)
-        self.ratio_button_svg = tk.Radiobutton(self.frame, text="SVG", value="SVG", variable=self.ratio_svg)
-        self.ratio_button_mp4 = tk.Radiobutton(self.frame, text="MP4", value="MP4", variable=self.ratio_mp4)
+        self.ratio_button_jpeg = tk.Radiobutton(self.frame, text="JPEG", value="JPEG", variable=self.file_to_convert)
+        self.ratio_button_png = tk.Radiobutton(self.frame, text="PNG", value="PNG", variable=self.file_to_convert)
+        self.ratio_button_pdf = tk.Radiobutton(self.frame, text="PDF", value="PDF", variable=self.file_to_convert)
+        self.ratio_button_svg = tk.Radiobutton(self.frame, text="SVG", value="SVG", variable=self.file_to_convert)
+        self.ratio_button_mp4 = tk.Radiobutton(self.frame, text="MP4", value="MP4", variable=self.file_to_convert)
 
         self.ratio_button_jpeg.grid(row=0, column=0, sticky="news")
         self.ratio_button_png.grid(row=0, column=1, sticky="news")
@@ -45,8 +40,12 @@ class MyGUI:
         self.frame.pack(fill="x")
 
 
-        self.convert_button = tk.Button(self.root, text="Convert File")
+        self.convert_button = tk.Button(self.root, text="Convert File", command=self.print_message)
         self.convert_button.pack(pady=75)
 
 
         self.root.mainloop()
+
+    def print_message(self):
+        print("Message")
+        print(self.file_to_convert.get())
