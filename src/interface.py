@@ -1,55 +1,52 @@
 import tkinter as tk
 from tkinter import filedialog
 
-def import_file():
-    file_path = filedialog.askopenfilename(title="Select a file", filetypes=[("Text files", "*.*"), ("All files", "*.*")])
+class MyGUI:
 
-    if file_path:
-        print("Selected file:", file_path)
+    def __init__(self):
+        self.root = tk.Tk()
 
-root = tk.Tk()
+        self.root.geometry("800x500")
+        self.root.title("Extension Changer")
 
-root.geometry("800x500")
-root.title("Extension Changer")
+        self.label = tk.Label(self.root, text="Insert your file", font=('Arial', 18))
+        self.label.pack(pady=20, padx=20)
 
-label = tk.Label(root, text="Insert your file", font=('Arial', 18))
-label.pack(pady=20, padx=20)
+        self.import_button = tk.Button(self.root, text="Import File", font=('Arial', 10))
+        self.import_button.pack(pady=30)
 
-import_button = tk.Button(root, text="Import File", font=('Arial', 10), command=import_file)
-import_button.pack(pady=30)
+        self.frame = tk.Frame(self.root)
+        self.frame.columnconfigure(0, weight=1)
+        self.frame.columnconfigure(1, weight=1)
+        self.frame.columnconfigure(2, weight=1)
+        self.frame.columnconfigure(3, weight=1)
+        self.frame.columnconfigure(4, weight=1)
 
-frame = tk.Frame(root)
-frame.columnconfigure(0, weight=1)
-frame.columnconfigure(1, weight=1)
-frame.columnconfigure(2, weight=1)
-frame.columnconfigure(3, weight=1)
-frame.columnconfigure(4, weight=1)
-
-ratio_jpeg = tk.StringVar()
-ratio_png = tk.StringVar()
-ratio_pdf = tk.StringVar()
-ratio_svg = tk.StringVar()
-ratio_mp4 = tk.StringVar()
+        self.ratio_jpeg = tk.StringVar()
+        self.ratio_png = tk.StringVar()
+        self.ratio_pdf = tk.StringVar()
+        self.ratio_svg = tk.StringVar()
+        self.ratio_mp4 = tk.StringVar()
 
 
-ratio_button_jpeg = tk.Radiobutton(frame, text="JPEG", value="JPEG", variable=ratio_jpeg)
-ratio_button_png = tk.Radiobutton(frame, text="PNG", value="PNG", variable=ratio_png)
-ratio_button_pdf = tk.Radiobutton(frame, text="PDF", value="PDF", variable=ratio_pdf)
-ratio_button_svg = tk.Radiobutton(frame, text="SVG", value="SVG", variable=ratio_svg)
-ratio_button_mp4 = tk.Radiobutton(frame, text="MP4", value="MP4", variable=ratio_mp4)
+        self.ratio_button_jpeg = tk.Radiobutton(self.frame, text="JPEG", value="JPEG", variable=self.ratio_jpeg)
+        self.ratio_button_png = tk.Radiobutton(self.frame, text="PNG", value="PNG", variable=self.ratio_png)
+        self.ratio_button_pdf = tk.Radiobutton(self.frame, text="PDF", value="PDF", variable=self.ratio_pdf)
+        self.ratio_button_svg = tk.Radiobutton(self.frame, text="SVG", value="SVG", variable=self.ratio_svg)
+        self.ratio_button_mp4 = tk.Radiobutton(self.frame, text="MP4", value="MP4", variable=self.ratio_mp4)
 
-ratio_button_jpeg.grid(row=0, column=0, sticky="news")
-ratio_button_png.grid(row=0, column=1, sticky="news")
-ratio_button_pdf.grid(row=0, column=2, sticky="news")
-ratio_button_svg.grid(row=0, column=3, sticky="news")
-ratio_button_mp4.grid(row=0, column=4, sticky="news")
-
-
-frame.pack(fill="x")
+        self.ratio_button_jpeg.grid(row=0, column=0, sticky="news")
+        self.ratio_button_png.grid(row=0, column=1, sticky="news")
+        self.ratio_button_pdf.grid(row=0, column=2, sticky="news")
+        self.ratio_button_svg.grid(row=0, column=3, sticky="news")
+        self.ratio_button_mp4.grid(row=0, column=4, sticky="news")
 
 
-convert_button = tk.Button(root, text="Convert File")
-convert_button.pack(pady=75)
+        self.frame.pack(fill="x")
 
 
-root.mainloop()
+        self.convert_button = tk.Button(self.root, text="Convert File")
+        self.convert_button.pack(pady=75)
+
+
+        self.root.mainloop()
