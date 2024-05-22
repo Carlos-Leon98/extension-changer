@@ -24,28 +24,32 @@ frame.columnconfigure(1, weight=1)
 frame.columnconfigure(2, weight=1)
 frame.columnconfigure(3, weight=1)
 frame.columnconfigure(4, weight=1)
-frame.columnconfigure(5, weight=1)
+
+ratio_jpeg = tk.StringVar()
+ratio_png = tk.StringVar()
+ratio_pdf = tk.StringVar()
+ratio_svg = tk.StringVar()
+ratio_mp4 = tk.StringVar()
 
 
-ratio_button_jpeg = tk.Radiobutton(frame, text="JPEG", value="JPEG")
-ratio_button_png = tk.Radiobutton(frame, text="PNG", value="PNG")
-ratio_button_gif = tk.Radiobutton(frame, text="GIF", value="GIF")
-ratio_button_pdf = tk.Radiobutton(frame, text="PDF", value="PDF")
-ratio_button_svg = tk.Radiobutton(frame, text="SVG", value="SVG")
-ratio_button_mp4 = tk.Radiobutton(frame, text="MP4", value="MP4")
+ratio_button_jpeg = tk.Radiobutton(frame, text="JPEG", value="JPEG", variable=ratio_jpeg)
+ratio_button_png = tk.Radiobutton(frame, text="PNG", value="PNG", variable=ratio_png)
+ratio_button_pdf = tk.Radiobutton(frame, text="PDF", value="PDF", variable=ratio_pdf)
+ratio_button_svg = tk.Radiobutton(frame, text="SVG", value="SVG", variable=ratio_svg)
+ratio_button_mp4 = tk.Radiobutton(frame, text="MP4", value="MP4", variable=ratio_mp4)
 
 ratio_button_jpeg.grid(row=0, column=0, sticky="news")
 ratio_button_png.grid(row=0, column=1, sticky="news")
-ratio_button_gif.grid(row=0, column=2, sticky="news")
-ratio_button_pdf.grid(row=0, column=3, sticky="news")
-ratio_button_svg.grid(row=0, column=4, sticky="news")
-ratio_button_mp4.grid(row=0, column=5, sticky="news")
+ratio_button_pdf.grid(row=0, column=2, sticky="news")
+ratio_button_svg.grid(row=0, column=3, sticky="news")
+ratio_button_mp4.grid(row=0, column=4, sticky="news")
 
 
 frame.pack(fill="x")
 
 
-
+convert_button = tk.Button(root, text="Convert File")
+convert_button.pack(pady=75)
 
 
 root.mainloop()
