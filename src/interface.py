@@ -12,7 +12,7 @@ class MyGUI:
         self.label = tk.Label(self.root, text="Insert your file", font=('Arial', 18))
         self.label.pack(pady=20, padx=20)
 
-        self.import_button = tk.Button(self.root, text="Import File", font=('Arial', 10))
+        self.import_button = tk.Button(self.root, text="Import File", font=('Arial', 10), command=self.import_file)
         self.import_button.pack(pady=30)
 
         self.frame = tk.Frame(self.root)
@@ -49,3 +49,7 @@ class MyGUI:
     def print_message(self):
         print("Message")
         print(self.file_to_convert.get())
+
+    def import_file(self):
+        file_name = filedialog.askopenfile()
+        print(f"Selected: ${file_name}")
