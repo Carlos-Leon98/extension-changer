@@ -1,2 +1,5 @@
 # Ignore directory __pycache__ in src/
 src/__pycache__/
+
+# Ignore .DS_Store
+.DS_Store
