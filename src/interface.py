@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import Scrollbar
 from tkinter import filedialog
 from pathlib import Path
 
@@ -9,6 +10,9 @@ class MyGUI:
 
         self.root.geometry("800x500")
         self.root.title("Extension Changer")
+
+        self.scrollbar = Scrollbar(self.root, orient="vertical")
+        self.scrollbar.pack(side="right", fill="y")
 
         self.label = tk.Label(self.root, text="Insert your file", font=('Arial', 18))
         self.label.pack(pady=20, padx=20)
@@ -39,12 +43,13 @@ class MyGUI:
         self.ratio_button_svg.grid(row=0, column=3, sticky="news")
         self.ratio_button_mp4.grid(row=0, column=4, sticky="news")
 
-
         self.frame.pack(fill="x")
 
-
-        self.convert_button = tk.Button(self.root, text="Convert File", command=self.print_message)
+        self.convert_button = tk.Button(self.root, text="Convert File", command=self.convert_file)
         self.convert_button.pack(pady=75)
+
+        self.test_button = tk.Button(self.root, text="Test", command=self.print_message)
+        self.test_button.pack(pady=80)
 
 
         self.root.mainloop()
@@ -56,7 +61,6 @@ class MyGUI:
 
     def import_file(self):
         file_name = filedialog.askopenfile()
-        print(f"Selected: ${file_name}")
 
         self.file_path.set(file_name)
         print(f"The value of file_path is: ${file_name}")
