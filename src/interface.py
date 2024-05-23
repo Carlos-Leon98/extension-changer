@@ -53,3 +53,6 @@ class MyGUI:
     def import_file(self):
         file_name = filedialog.askopenfile()
         print(f"Selected: ${file_name}")
+
+    def convert_file(self, file_path, file_type):
+        pass
