@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import Scrollbar
 from tkinter import filedialog
 from pathlib import Path
+from fpdf import FPDF
 
 class MyGUI:
 
@@ -28,6 +29,8 @@ class MyGUI:
         self.frame.columnconfigure(2, weight=1)
         self.frame.columnconfigure(3, weight=1)
         self.frame.columnconfigure(4, weight=1)
+        self.frame.columnconfigure(5, weight=1)
+
 
         self.file_to_convert = tk.StringVar()
 
@@ -36,12 +39,14 @@ class MyGUI:
         self.ratio_button_pdf = tk.Radiobutton(self.frame, text="PDF", value="pdf", variable=self.file_to_convert)
         self.ratio_button_svg = tk.Radiobutton(self.frame, text="SVG", value="svg", variable=self.file_to_convert)
         self.ratio_button_mp4 = tk.Radiobutton(self.frame, text="MP4", value="mp4", variable=self.file_to_convert)
+        self.ratio_button_txt = tk.Radiobutton(self.frame, text="TXT", value="txt", variable=self.file_to_convert)
 
         self.ratio_button_jpeg.grid(row=0, column=0, sticky="news")
         self.ratio_button_png.grid(row=0, column=1, sticky="news")
         self.ratio_button_pdf.grid(row=0, column=2, sticky="news")
         self.ratio_button_svg.grid(row=0, column=3, sticky="news")
         self.ratio_button_mp4.grid(row=0, column=4, sticky="news")
+        self.ratio_button_txt.grid(row=0, column=5, sticky="news")
 
         self.frame.pack(fill="x")
 
@@ -74,5 +79,6 @@ class MyGUI:
             path = Path(self.file_path.get())
             new_file = path.with_suffix('.' + self.file_to_convert.get())
             path.rename(new_file)
+            print("Run successfully:", new_file)
         except Exception as e:
             print(f"Error converting the file to .{self.file_to_convert.get()}:", e)
