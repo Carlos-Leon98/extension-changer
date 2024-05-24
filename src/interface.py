@@ -60,12 +60,19 @@ class MyGUI:
         print(self.file_path.get())
 
     def import_file(self):
-        file_name = filedialog.askopenfile()
+        try:
+            file_name = filedialog.askopenfilename()
 
-        self.file_path.set(file_name)
-        print(f"The value of file_path is: ${file_name}")
+            self.file_path.set(file_name)
+            print(f"The value of file_path is: {file_name}")
+
+        except Exception as e:
+            print("Error getting the file path:", e)           
 
     def convert_file(self):
-        path = Path(self.file_path.get())
-        new_file = path.with_suffix('.' + self.file_to_convert.get())
-        return new_file
+        try:
+            path = Path(self.file_path.get())
+            new_file = path.with_suffix('.' + self.file_to_convert.get())
+            path.rename(new_file)
+        except Exception as e:
+            print(f"Error converting the file to .{self.file_to_convert.get()}:", e)
